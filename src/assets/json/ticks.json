@@ -1,50 +1,24 @@
-[
-   {
-      "price":{
-         "dollars":"5",
-         "cents":"21"
-      },
-      "time":{
-         "hours":"3",
-         "minutes":"32",
-         "seconds":"23"
-      },
+{
+  "ticks": [
+    {
+      "price": "5.21",
+      "timestamp": "1495127793",
       "volume":"500"
-   },
-   {
-      "price":{
-         "dollars":"2",
-         "cents":"23"
-      },
-      "time":{
-         "hours":"1",
-         "minutes":"54",
-         "seconds":"12"
-      },
+    },
+    {
+      "price": "2.23",
+      "timestamp": "1516299724",
       "volume":"200"
-   },
-   {
-      "price":{
-         "dollars":"3",
-         "cents":"99"
-      },
-      "time":{
-         "hours":"3",
-         "minutes":"42",
-         "seconds":"23"
-      },
+    },
+    {
+      "price": "3.99",
+      "timestamp": "1516299729",
       "volume":"1000"
-   },
-   {
-      "price":{
-         "dollars":"6",
-         "cents":"10"
-      },
-      "time":{
-         "hours":"5",
-         "minutes":"51",
-         "seconds":"11"
-      },
+    },
+    {
+      "price": "6.10",
+      "timestamp": "1516299735",
       "volume":"600"
-   }
-]
+    }
+  ]
+}

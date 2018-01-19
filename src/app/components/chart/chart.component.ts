@@ -14,7 +14,6 @@ export class ChartComponent implements OnInit {
 
   ngOnInit() {
     this.http.get('/assets/json/ticks.json').subscribe(data => {
-      console.log(data);
       this.tickList = data as [any];
     });
   }
