@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { TicksService } from './services/ticks.service';
+
+import { WeatherService } from './services/weather.service';
 import { Chart } from 'chart.js';
-import {falseIfMissing} from 'protractor/built/util';
 
 @Component({
   selector: 'app-root',
@@ -9,20 +9,28 @@ import {falseIfMissing} from 'protractor/built/util';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  chart = []; // This will hold our chart info
 
-  constructor(private ticks: TicksService) {}
-
-  chart: [any];
+  constructor(private _weather: WeatherService) {}
 
   ngOnInit() {
-    this.ticks.ticks()
+    this._weather.dailyForecast()
       .subscribe(res => {
+        // let temp_max = res['list'].map(res => res.main.temp_max);
+        // let temp_min = res['list'].map(res => res.main.temp_min);
+        // let alldates = res['list'].map(res => res.dt)
 
         let price = res['ticks'].map(res => res.price);
         let time = res['ticks'].map(res => res.timestamp);
         let volume = res['ticks'].map(res => res.volume);
 
-        let formattedTimes = []
+        // let weatherDates = []
+        // alldates.forEach((res) => {
+        //     let jsdate = new Date(res * 1000)
+        //     weatherDates.push(jsdate.toLocaleTimeString('en', { year: 'numeric', month: 'short', day: 'numeric' }))
+        // });
+
+        let formattedTimes = [];
         time.forEach((res) => {
           let jstime = new Date(res * 1000);
           formattedTimes.push(jstime.toLocaleTimeString('en',
@@ -31,15 +39,20 @@ export class AppComponent {
         });
 
         this.chart = new Chart('canvas', {
-          type: 'scatter',
+          type: 'line',
           data: {
             labels: formattedTimes,
             datasets: [
               {
                 data: price,
-                borderColor: '#3cba9f',
-                fill: false
+                borderColor: "#3cba9f",
+                fill: true
               },
+              // {
+              //   data: volume,
+              //   borderColor: "#ffcc00",
+              //   fill: false
+              // },
             ]
           },
           options: {
@@ -52,12 +65,10 @@ export class AppComponent {
               }],
               yAxes: [{
                 display: true
-              }]
+              }],
             }
           }
         });
       });
-
   }
-
 }
