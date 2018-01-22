@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import 'rxjs/add/operator/map';
 
 @Injectable()
-export class WeatherService {
+export class TickService {
 
   constructor(private _http: HttpClient) { }
 

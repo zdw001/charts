@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { WeatherService } from './services/weather.service';
+import { TickService } from './services/tick.service';
 import { Chart } from 'chart.js';
 
 @Component({
@@ -11,10 +11,10 @@ import { Chart } from 'chart.js';
 export class AppComponent {
   chart = []; // This will hold our chart info
 
-  constructor(private _weather: WeatherService) {}
+  constructor(private _ticks: TickService) {}
 
   ngOnInit() {
-    this._weather.dailyForecast()
+    this._ticks.dailyForecast()
       .subscribe(res => {
         // let temp_max = res['list'].map(res => res.main.temp_max);
         // let temp_min = res['list'].map(res => res.main.temp_min);
